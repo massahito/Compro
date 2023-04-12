@@ -1,26 +1,36 @@
 
-#include <cstdlib>
 #include <iostream>
+#include <set>
+#include <cstdlib>
 #include <string>
 using namespace std;
 int main(void)
 {
 	int N;
-	int S;
+	long M;
+	long X;
+	set<long> st;
 	int i;
-	int M;
-	cin >> N >> M;
+	cin >> N >> X;
 	i = 0;
 	while (i < N)
 	{
-		cin >> S;
-
-		if(S < M && arr[M - S])
+		cin >> M;
+		st.insert(M);
+		i++;
+	}
+	i = 0;
+	decltype(st)::iterator it = st.begin();
+	while(it != st.end())
+	{
+		decltype(st)::iterator ans = st.find(X + *it);
+		if(ans != st.end())
 		{
+			cout << "ans = " << *ans << endl;
 			cout << "Yes" << endl;
 			return 0;
 		}
-		i++;
+		it++;
 	}
 	cout << "No" << endl;
 	return 1;
