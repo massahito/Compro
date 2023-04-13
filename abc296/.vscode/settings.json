@@ -35,6 +35,12 @@
   ],
   "C_Cpp_Runner.useAddressSanitizer": false,
   "files.associations": {
-    "istream": "cpp"
+    "istream": "cpp",
+    "*.tcc": "cpp",
+    "string": "cpp",
+    "unordered_map": "cpp",
+    "functional": "cpp",
+    "string_view": "cpp",
+    "streambuf": "cpp"
   }
 }

@@ -23,15 +23,14 @@ int main(void)
 	decltype(st)::iterator it = st.begin();
 	while(it != st.end())
 	{
-		decltype(st)::iterator ans = st.find(X + *it);
+		decltype(st)::iterator ans = st.find(X + (*it));
 		if(ans != st.end())
 		{
-			cout << "ans = " << *ans << endl;
 			cout << "Yes" << endl;
 			return 0;
 		}
 		it++;
 	}
 	cout << "No" << endl;
-	return 1;
+	return 0;
 }
