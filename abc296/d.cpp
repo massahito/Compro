@@ -7,23 +7,25 @@ using namespace	std;
 
 int main()
 {
-	long N, M;
-	long ans;
+	long	N, M;
+	long	ans;
 	long	i;
 	cin >> N >> M;
 
 	i = 1;
 	ans = __LONG_MAX__;
-	while (i <= sqrt(M))
+	while (i <= N)
 	{
 		long temp = (M + i - 1) / i;
-		if(temp <= N && M <= temp * i && temp * i < ans)
+		if (temp <= N && M <= temp * i && temp * i < ans)
 			ans = temp * i;
+		if (temp < i)
+			break;
 		i++;
 	}
-	if (ans != __LONG_MAX__)
-		cout << ans << endl;
-	else
+	if (ans == __LONG_MAX__)
 		cout << -1 << endl;
+	else
+		cout << ans << endl;
 	return 0;
 }
