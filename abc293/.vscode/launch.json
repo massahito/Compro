@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/masahito/Documents/Compro/abc296",
-      "program": "/home/masahito/Documents/Compro/abc296/build/Debug/outDebug",
+      "cwd": "/home/masahito/Documents/Compro/abc293",
+      "program": "/home/masahito/Documents/Compro/abc293/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
