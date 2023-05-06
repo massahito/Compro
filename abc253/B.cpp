@@ -4,24 +4,21 @@ using namespace std;
 
 int main()
 {
-	int H, W;
-	int x, y;
+	int N;
+	int arr[30][30] = {0};
 
-	cin >> H >> W;
-	x = 0;
-	y = 0;
-	for(int i = 0; i < H; i++)
+	cin >> N;
+	for(int i = 0 ; i < N; i++)
 	{
-		for(int j = 0; j < W; j++)
+		for(int j = 0; j <= i; j++)
 		{
-			char chr;
-			cin >> chr;
-			if(chr == 'o')
-			{
-				x = abs(x - j);
-				y = abs(y - i);
-			}
+			if(j == 0 || j == i)
+				arr[i][j] = 1;
+			else
+				arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j];
+			cout << arr[i][j] << " ";
 		}
+		cout << endl;
 	}
-	cout << x + y << endl;
 }
+

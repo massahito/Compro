@@ -1,42 +1,40 @@
 #include <iostream>
-#include <map>
+#include <vector>
+#include <queue>
+
 using namespace std;
 
 int main()
 {
-	int Q;
-	int q, x, c;
-	map<int, int> mp;
+	int N, K;
 
-	cin >> Q;
-	for(int i = 0; i < Q; i++)
+	cin >> N >> K;
+	vector<int> vct(N);
+	vector<int, queue<int> > mp(K);
+
+	for(int i = 0; i < N; i++)
+		cin >> vct[i];
+	for(int i = 0; i < N; i++)
+		mp[i % K].push(vct[i]);
+	for(int i = 0; i < K; i++)
+		sort(mp[i].begin(), mp[i].end());
+
+	int prenum = mp[0].front();
+	for(int j = 0; j < N / K + 1; j++)
 	{
-		cin >> q;
-		if(q == 1)
+		for(int i = 0; i < K; i++)
 		{
-			cin >> x;
-			mp[x]++;
-		}
-		else if(q == 2)
-		{
-			cin >> x >> c;
-			while(mp[x] && c)
+			if(mp[i].empty())
+				continue;
+			if(mp[i].front() < prenum)
 			{
-				mp[x]--;
-				c--;
+				cout << "No" << endl;
+				return 0;
 			}
-		}
-		else
-		{
-			auto begin = mp.begin();
-			auto rbegin = mp.rbegin();
-			while(begin->second == 0)
-				begin++;
-			while(rbegin->second == 0)
-				rbegin++;
-			cout << rbegin->first - begin->first << endl;
+			prenum = mp[i].front();
+			mp[i].pop();
 		}
 	}
+	cout << "Yes" << endl;
+	return 0;
 }
-
-
