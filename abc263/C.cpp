@@ -25,7 +25,6 @@ void dfs(vector<int> vct, int n, int N, int M)
 		cout << endl;
 		return ;
 	}
-
 	if(n == 0)
 		start = 1;
 	else
