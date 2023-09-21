@@ -1,56 +1,40 @@
 #include <iostream>
+#include <utility>
 #include <vector>
 
 using namespace std;
 
-long long	binarySearch(vector<long long> &F, long long base,long long left, long long right);
-
 int main()
 {
-	long long L, N1, N2;
+	long long	L;
+	int			N1, N2;
 
 	cin >> L >> N1 >> N2;
-	vector<pair<long long>>		L1(N);
-	vector<long long>			F1(N);
 
+	vector<pair<long long, long long>>	L1(N1), L2(N2);
+	for (auto &&[l, v] : L1)
+		cin >> v >> l;
 
-	for (int i = 0; i < N1; i++)
-	{
-		long long v, l;
-		
+	for (auto &&[l, v] : L2)
 		cin >> v >> l;
-		if (i == 0)
-			F1[i] = l;
-		else
-			F1[i] = F1[i - 1] + l;
-		L1[i] = make_pair(v, l);
-	}
-	long long sum = 0;
-	for (int i = 0; i < N2; i++)
+
+	int			idx1 = 0, idx2 = 0;
+	long long	count = 0, p = 0, q = 0;
+	while (idx1 < N1  && idx2 < N2)
 	{
-		long long v, l. idx
-		cin >> v >> l;
-		sum += 
-		idx = binarySearch(F1, sum, 0, N1);
-		if (L1[idx].first == v)
+		if (L1[idx1].second == L2[idx2].second)
+			count += min(p + L1[idx1].first, q + L2[idx2].first) - max(p, q);
+		if (p + L1[idx1].first < L2[idx2].first + q)
 		{
-			cout << max(F[idx] - sum,  << endl;
-			
-		
-
-
-
-long long	binarySearch(vector<long long> &F, long long base,long long left, long long right)
-{
-	while (right - left > 1)	
-	{
-		long long mid = (left + right) / 2;
-		if (mid <= F[mid])
-			left = mid;
+			p += L1[idx1].first;
+			idx1++;
+		}
 		else
-			right = mid
+		{
+			q += L2[idx2].first;
+			idx2++;
+		}
 	}
-	return (left);
+	cout << count << endl;
 }
-			
 
